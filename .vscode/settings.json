@@ -1,4 +1,0 @@
-{
-    "containers.commands.run": "${containerCommand} run --shm-size=1g --ulimit memlock=-1 --ulimit stack=67108864 --runtime nvidia --rm -d ${exposedPorts} ${tag}",
-    "containers.commands.runInteractive": "${containerCommand} run --shm-size=1g --ulimit memlock=-1 --ulimit stack=67108864 --runtime nvidia -v ${PWD}:/workspace --rm -it ${exposedPorts} ${tag}"
-}
