@@ -1,0 +1,13 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Training Loop",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/training_recipe/training_loop.py",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        }
+    ]
+}

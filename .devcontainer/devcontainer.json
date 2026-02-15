@@ -1,0 +1,32 @@
+{
+    "name": "physicsnemo",
+    "image": "nvcr.io/nvidia/physicsnemo/physicsnemo:25.11",
+    "runArgs": [
+        "--shm-size=1g",
+        "--ulimit",
+        "memlock=-1",
+        "--ulimit",
+        "stack=67108864",
+        "--runtime=nvidia",
+        "--gpus",
+        "all"
+    ],
+    "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
+    "workspaceFolder": "/workspace",
+    "updateContentCommand": "apt-get update && apt-get install -y git curl procps",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python",
+                "ms-python.debugpy",
+                "ms-azuretools.vscode-containers",
+                "GitHub.copilot-chat",
+                "ms-python.vscode-pylance",
+                "ms-vscode-remote.remote-containers"
+            ],
+            "settings": {
+                "python.defaultInterpreterPath": "/usr/bin/python"
+            }
+        }
+    }
+}
