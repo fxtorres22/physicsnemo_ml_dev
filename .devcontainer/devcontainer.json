@@ -13,7 +13,13 @@
     ],
     "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
     "workspaceFolder": "/workspace",
-    "updateContentCommand": "apt-get update && apt-get install -y git curl procps",
+    "forwardPorts": [8000],
+    "portsAttributes": {
+        "8000": {
+            "label": "MkDocs",
+            "onAutoForward": "notify"
+        },
+//    "updateContentCommand": "apt-get update && apt-get install -y git curl procps",
     "customizations": {
         "vscode": {
             "extensions": [
@@ -25,7 +31,7 @@
                 "ms-vscode-remote.remote-containers"
             ],
             "settings": {
-                "python.defaultInterpreterPath": "/usr/bin/python"
+                "python.defaultInterpreterPath": "/bin/python"
             }
         }
     }
