@@ -1,1 +1,25 @@
-site_name: My Docs
+site_name: PhysicsNeMo ML Dev
+site_description: Documentation for the PhysicsNeMo ML Development project.
+site_author: Fernando Torres
+nav:
+  - Home: index.md
+  - Setup: setup.md
+theme:
+  name: material
+  palette:
+      scheme: slate
+      primary: indigo
+      accent: deep purple
+  font:
+      text: Roboto
+      code: ABeeZee
+  features:
+      - content.code.copy
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
