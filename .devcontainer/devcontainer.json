@@ -1,5 +1,5 @@
 {
-    "name": "physicsnemo",
+    "name": "physicsnemo_devcontainer",
     "image": "nvcr.io/nvidia/physicsnemo/physicsnemo:25.11",
     "runArgs": [
         "--shm-size=1g",
@@ -13,25 +13,49 @@
     ],
     "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
     "workspaceFolder": "/workspace",
-    "forwardPorts": [8000],
+    "forwardPorts": [8000, 8888],
     "portsAttributes": {
         "8000": {
             "label": "MkDocs",
             "onAutoForward": "notify"
         },
-//    "updateContentCommand": "apt-get update && apt-get install -y git curl procps",
+        "8888": {
+            "label": "Jupyter",
+            "onAutoForward": "notify"
+        }
+    },
+    "postCreateCommand": "pip install --upgrade pip mkdocs mkdocs-material",//jupyter jupyterlab numpy pandas scikit-learn matplotlib seaborn scipy torch tensorboard",
     "customizations": {
         "vscode": {
             "extensions": [
+                "ms-vscode-remote.remote-containers",
+                "GitHub.copilot-chat",
+                "github.vscode-pull-request-github",
+                "ms-toolsai.jupyter",
+                "ms-toolsai.vscode-jupyter-cell-tags",
+                "ms-toolsai.jupyter-renderers",
+                "ms-toolsai.vscode-jupyter-slideshow",
+                "ms-python.vscode-pylance",
                 "ms-python.python",
                 "ms-python.debugpy",
-                "ms-azuretools.vscode-containers",
-                "GitHub.copilot-chat",
-                "ms-python.vscode-pylance",
-                "ms-vscode-remote.remote-containers"
+                "ms-python.vscode-python-envs",                
+                "redhat.vscode-yaml",
+                "ms-toolsai.jupyter-keymap"
             ],
             "settings": {
-                "python.defaultInterpreterPath": "/bin/python"
+                "python.defaultInterpreterPath": "/bin/python",
+                "files.exclude": {
+                    ".venv": true,
+                    ".github": true,
+                    //".git": true,
+                    "site": true
+                },
+                "files.watcherExclude": {
+                    ".venv/**": true,
+                    ".github/**": true,
+                    //".git/**": true,
+                    "site/**": true
+                }
             }
         }
     }
