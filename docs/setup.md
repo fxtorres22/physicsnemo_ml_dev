@@ -1,4 +1,4 @@
-# Initial Linux Setup
+# PhysicsNeMo Docker Setup
 
 ***
 
