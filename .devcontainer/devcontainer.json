@@ -43,7 +43,7 @@
                 "ms-toolsai.jupyter-keymap"
             ],
             "settings": {
-                "python.defaultInterpreterPath": "/bin/python",
+                "python.defaultInterpreterPath": "/usr/bin/python",
                 "files.exclude": {
                     ".venv": true,
                     ".github": true,
