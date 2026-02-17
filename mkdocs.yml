@@ -4,7 +4,7 @@ site_author: Fernando Torres
 nav:
   - Home: index.md
   - Setup: setup.md
-  - DCV Setup: dcv_setup.md
+  - DCV Setup: dcv_nvidia.md
 theme:
   name: material
   palette:

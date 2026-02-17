@@ -6,83 +6,83 @@ This setup gives you a lightweight CPU-rendered desktop (perfect for VS Code/Deb
 
 1. Update and Install GUI (Minimal)
 
-``` bash
-sudo apt update && sudo apt upgrade -y
-sudo apt install -y ubuntu-desktop-minimal
-```
+    ``` bash
+    sudo apt update && sudo apt upgrade -y
+    sudo apt install -y ubuntu-desktop-minimal
+    ```
 
 2. Install NVIDIA Drivers
 
-``` bash
-sudo
-```
+    ``` bash
+    sudo
+    ```
 
 3. Install Dummy Driver (Required for Virtual Sessions)
 
-``` bash
-sudo apt install -y xserver-xorg-video-dummy
-```
+    ``` bash
+    sudo apt install -y xserver-xorg-video-dummy
+    ```
 
 4. Reboot
 
-``` bash
-sudo reboot
-```
+    ``` bash
+    sudo reboot
+    ```
 
 ## Install NICE DCV (The Complete Suite)
 
 1. Import GPG Key
 
-``` bash
-wget https://d1uj6qtbmh3dt5.cloudfront.net/NICE-GPG-KEY
-gpg --import NICE-GPG-KEY
-```
+    ``` bash
+    wget https://d1uj6qtbmh3dt5.cloudfront.net/NICE-GPG-KEY
+    gpg --import NICE-GPG-KEY
+    ```
 
 2. Download DCV 2025.0 (Ubuntu 24.04 version)
 
-``` bash
-wget https://d1uj6qtbmh3dt5.cloudfront.net/2025.0/Servers/nice-dcv-2025.0-20103-ubuntu2404-x86_64.tgz
-tar -xvzf nice-dcv-2025.0-20103-ubuntu2404-x86_64.tgz
-cd nice-dcv-2025.0-20103-ubuntu2404-x86_64
-```
+    ``` bash
+    wget https://d1uj6qtbmh3dt5.cloudfront.net/2025.0/Servers/nice-dcv-2025.0-20103-ubuntu2404-x86_64.tgz
+    tar -xvzf nice-dcv-2025.0-20103-ubuntu2404-x86_64.tgz
+    cd nice-dcv-2025.0-20103-ubuntu2404-x86_64
+    ```
 
 3. Install All Packages
 
-This installs the `Server`, `Web Viewer`, `GPU shim`, and `X drivers` in one go.
+    This installs the `Server`, `Web Viewer`, `GPU shim`, and `X drivers` in one go.
 
-``` bash
-sudo apt install ./nice-dcv-server_*.deb ./nice-dcv-web-viewer_*.deb ./nice-dcv-gl_*.deb ./nice-xdcv_*.deb -y
-```
+    ``` bash
+    sudo apt install ./nice-dcv-server_*.deb ./nice-dcv-web-viewer_*.deb ./nice-dcv-gl_*.deb ./nice-xdcv_*.deb -y
+    ```
 
 3. Configure User Access
 
-``` bash
-# Add ubuntu user to video group
-sudo usermod -aG video ubuntu
+    ``` bash
+    # Add ubuntu user to video group
+    sudo usermod -aG video ubuntu
 
-# Set a password for the GUI login (if you haven't already)
-sudo passwd ubuntu
-```
+    # Set a password for the GUI login (if you haven't already)
+    sudo passwd ubuntu
+    ```
 
 ## Choose Your Display Manager
 
-* GDM3 (Default - Easiest)
+### GDM3 (Default - Easiest)
 
->Pros: Already installed.
+Pros: Already installed.
 
->Cons: Heavy, can be buggy with NVIDIA drivers.
+Cons: Heavy, can be buggy with NVIDIA drivers.
 
->Configuration: You must disable Wayland for stability.
+Configuration: You must disable Wayland for stability.
 
 ``` bash
 sudo sed -i 's/#WaylandEnable=false/WaylandEnable=false/' /etc/gdm3/custom.conf
 ```
 
-* LightDM (Recommended - Most Stable)
+### LightDM (Recommended - Most Stable)
 
->Pros: Lightweight, ignores missing monitors, very reliable for headless servers.
+Pros: Lightweight, ignores missing monitors, very reliable for headless servers.
 
->Cons: Requires installation.
+Cons: Requires installation.
 
 ``` bash
 sudo apt install lightdm -y
@@ -94,37 +94,37 @@ Stick with (GDM3) first since we are using Virtual Mode. If you ever have boot i
 
 1. Edit the DCV Configuration File
 
-``` bash
-sudo nano /etc/dcv/dcv.conf
-```
+    ``` bash
+    sudo nano /etc/dcv/dcv.conf
+    ```
 2. Make the following changes:
 
-Section: `[session-management]`
+    Section: `[session-management]`
 
->Uncomment/Add: `create-session = true`
+        Uncomment/Add: `create-session = true`
 
-Section: `[session-management/defaults]`
+    Section: `[session-management/defaults]`
 
->Uncomment/Add: `owner = "ubuntu"`
+        Uncomment/Add: `owner = "ubuntu"`
 
->Uncomment/Add: `type = "virtual"`
+        Uncomment/Add: `type = "virtual"`
 
-Your file should look roughly like this (comments removed for clarity):
+    Your file should look roughly like this (comments removed for clarity):
 
-```
-[session-management]
-create-session = true
+    ```
+    [session-management]
+    create-session = true
 
-[session-management/defaults]
-owner = "ubuntu"
-type = "virtual"
-```
+    [session-management/defaults]
+    owner = "ubuntu"
+    type = "virtual"
+    ```
 
 3. Save and Exit
 
-* Press Ctrl+O, Enter (Save).
+    * Press Ctrl+O, Enter (Save).
 
-* Press Ctrl+X (Exit).
+    * Press Ctrl+X (Exit).
 
 ## Final Enable & Start
 
