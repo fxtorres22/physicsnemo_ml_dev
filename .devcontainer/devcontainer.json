@@ -47,13 +47,11 @@
                 "files.exclude": {
                     ".venv": true,
                     ".github": true,
-                    //".git": true,
                     "site": true
                 },
                 "files.watcherExclude": {
                     ".venv/**": true,
                     ".github/**": true,
-                    //".git/**": true,
                     "site/**": true
                 }
             }

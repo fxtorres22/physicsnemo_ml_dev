@@ -196,3 +196,31 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# PhysicsNeMo specific entries
+
+# VsCode
+.vscode/
+.cursor/
+
+# VIM
+*.swp
+*~
+
+# Additional stuff
+nsight-systems*
+build/
+mlruns/
+checkpoints/
+
+# Hydra
+outputs/
+multirun/
+.hydra/
+
+# SLURM
+slurm-*.out
+sbatch_logs/
+
+# ASV
+.asv/
