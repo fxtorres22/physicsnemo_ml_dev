@@ -7,9 +7,7 @@
         "memlock=-1",
         "--ulimit",
         "stack=67108864",
-        "--runtime=nvidia",
-        "--gpus",
-        "all"
+        "--runtime=nvidia"
     ],
     "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
     "workspaceFolder": "/workspace",
