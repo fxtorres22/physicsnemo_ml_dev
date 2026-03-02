@@ -3,7 +3,7 @@ hide:
   - navigation
 ---
 
-# PhysicsNeMo ML Dev
+# PhysicsNeMo ML Development
 
 **A personal learning journal for deploying, training, and using NVIDIA PhysicsNeMo machine learning models.**
 
@@ -80,8 +80,6 @@ Before getting started, make sure you have:
 - [x] A machine with an **NVIDIA GPU** (compute capability 7.0+)
 - [x] **Windows 10/11** (build 19041+) with WSL2, or native **Ubuntu 22.04/24.04**
 - [x] At least **16 GB RAM** and **50 GB free disk space**
-- [x] An [NVIDIA NGC account](https://ngc.nvidia.com/) (free) for pulling containers
-
 ---
 
-*Last updated: March 2025*
+*Last updated: March 2026*

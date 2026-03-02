@@ -10,7 +10,6 @@ Before pulling the container, ensure you have:
 
 - [x] [Docker installed](../environment/docker-engine.md)
 - [x] [NVIDIA Container Toolkit configured](../environment/nvidia-container-toolkit.md)
-- [x] An [NVIDIA NGC account](https://ngc.nvidia.com/) (free registration)
 
 ---
 
@@ -23,7 +22,7 @@ docker pull nvcr.io/nvidia/physicsnemo/physicsnemo:<tag>
 ```
 
 !!! tip "Available Tags"
-    Browse all available tags on the [PhysicsNeMo NGC Container page](https://catalog.ngc.nvidia.com/orgs/nvidia/teams/physicsnemo/containers/physicsnemo/tags).
+Browse all available tags on the [PhysicsNeMo NGC Container page](https://catalog.ngc.nvidia.com/orgs/nvidia/teams/physicsnemo/containers/physicsnemo/tags).
 
     As of this writing, the latest tag is `25.11`.
 
@@ -32,7 +31,7 @@ docker pull nvcr.io/nvidia/physicsnemo/physicsnemo:<tag>
 ## Launching Container Sessions
 
 !!! note "Replace `<tag>`"
-    In all commands below, replace `<tag>` with your installed version (e.g., `25.11`).
+In all commands below, replace `<tag>` with your installed version (e.g., `25.11`).
 
 ### Basic Shell Session
 
@@ -64,7 +63,7 @@ docker run \
 ```
 
 !!! tip "Mounting Directories"
-    The `-v ${PWD}:/workspace` flag mounts your current directory to `/workspace` inside the container. Changes to files in `/workspace` persist on your host machine.
+The `-v ${PWD}:/workspace` flag mounts your current directory to `/workspace` inside the container. Changes to files in `/workspace` persist on your host machine.
 
 ### Session with Jupyter Lab
 
@@ -85,37 +84,21 @@ docker run \
 
 Then open `http://localhost:8888` in your browser and paste the token from the terminal output.
 
-### Multi-GPU Session
-
-To use all available GPUs:
-
-```bash
-docker run \
-  --shm-size=8g \
-  --ulimit memlock=-1 \
-  --ulimit stack=67108864 \
-  --gpus all \
-  --runtime nvidia \
-  -v ${PWD}:/workspace \
-  -it --rm \
-  nvcr.io/nvidia/physicsnemo/physicsnemo:<tag> bash
-```
-
 ---
 
 ## Understanding the Docker Run Flags
 
-| Flag | Purpose |
-|------|---------|
-| `--shm-size=1g` | Sets shared memory size — increase for multi-process data loading |
-| `--ulimit memlock=-1` | Removes memory locking limits (required for GPU pinned memory) |
-| `--ulimit stack=67108864` | Sets stack size to 64MB (required by some CUDA operations) |
-| `--runtime nvidia` | Uses the NVIDIA container runtime for GPU access |
-| `--gpus all` | Exposes all GPUs to the container |
-| `-v host:container` | Bind-mounts a host directory into the container |
-| `-p host:container` | Maps a container port to the host (e.g., for Jupyter) |
-| `-it` | Interactive mode with a pseudo-TTY |
-| `--rm` | Automatically remove the container when it exits |
+| Flag                      | Purpose                                                           |
+| ------------------------- | ----------------------------------------------------------------- |
+| `--shm-size=1g`           | Sets shared memory size — increase for multi-process data loading |
+| `--ulimit memlock=-1`     | Removes memory locking limits (required for GPU pinned memory)    |
+| `--ulimit stack=67108864` | Sets stack size to 64MB (required by some CUDA operations)        |
+| `--runtime nvidia`        | Uses the NVIDIA container runtime for GPU access                  |
+| `--gpus all`              | Exposes all GPUs to the container                                 |
+| `-v host:container`       | Bind-mounts a host directory into the container                   |
+| `-p host:container`       | Maps a container port to the host (e.g., for Jupyter)             |
+| `-it`                     | Interactive mode with a pseudo-TTY                                |
+| `--rm`                    | Automatically remove the container when it exits                  |
 
 ---
 

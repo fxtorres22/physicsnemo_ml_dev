@@ -33,7 +33,7 @@ Docker is the core runtime for building and running containers. This guide cover
 ## Docker Desktop
 
 !!! info "WSL2 Backend"
-    On Windows, Docker Desktop uses WSL2 as its backend. Make sure you have [WSL2 set up](wsl-setup.md) before proceeding.
+On Windows, Docker Desktop uses WSL2 as its backend. Make sure you have [WSL2 set up](wsl-setup.md) before proceeding.
 
 ### Install on Windows
 
@@ -58,7 +58,7 @@ Open a terminal (or WSL2) and run:
 
 ```bash
 docker --version
-docker run hello-world
+sudo docker run hello-world
 ```
 
 ---
@@ -67,20 +67,19 @@ docker run hello-world
 
 ### Supported Ubuntu Versions
 
-| Version | Codename |
-|---------|----------|
-| Ubuntu 25.10 | Kinetic |
-| Ubuntu 24.04 LTS | Noble |
-| Ubuntu 22.04 LTS | Jammy |
+| Version          | Codename |
+| ---------------- | -------- |
+| Ubuntu 25.10     | Kinetic  |
+| Ubuntu 24.04 LTS | Noble    |
+| Ubuntu 22.04 LTS | Jammy    |
 
 ### Uninstall Conflicting Packages
 
 Remove any unofficial Docker packages that may interfere:
 
 ```bash
-sudo apt remove $(dpkg --get-selections \
-  docker.io docker-compose docker-compose-v2 \
-  docker-doc podman-docker containerd runc 2>/dev/null | cut -f1) 2>/dev/null
+sudo apt remove $(dpkg --get-selections docker.io docker-compose docker-compose-v2 /
+docker-doc podman-docker containerd runc | cut -f1)
 ```
 
 ### Install Using the `apt` Repository
@@ -94,7 +93,7 @@ sudo apt update
 sudo apt install ca-certificates curl
 sudo install -m 0755 -d /etc/apt/keyrings
 sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg \
-  -o /etc/apt/keyrings/docker.asc
+-o /etc/apt/keyrings/docker.asc
 ```
 
 Add the repository to `apt` sources:
@@ -141,7 +140,7 @@ sudo docker run hello-world
 ```
 
 !!! success "You have successfully installed Docker Engine"
-    The `hello-world` container downloads a test image, runs it, prints a confirmation message, and exits.
+The `hello-world` container downloads a test image, runs it, prints a confirmation message, and exits.
 
 ---
 
@@ -152,36 +151,36 @@ These steps apply to **both** Docker Desktop and Docker Engine installations.
 ### Manage Docker as a Non-Root User
 
 !!! warning "Security Notice"
-    The `docker` group grants root-level privileges. Only add trusted users to this group.
+The `docker` group grants root-level privileges. Only add trusted users to this group.
 
 1. Create the `docker` group:
 
-    ```bash
-    sudo groupadd docker
-    ```
+   ```bash
+   sudo groupadd docker
+   ```
 
 2. Add your user to the group:
 
-    ```bash
-    sudo usermod -aG docker $USER
-    ```
+   ```bash
+   sudo usermod -aG docker $USER
+   ```
 
 3. Activate the group changes:
 
-    ```bash
-    newgrp docker
-    ```
+   ```bash
+   newgrp docker
+   ```
 
 4. Verify you can run Docker without `sudo`:
 
-    ```bash
-    docker run hello-world
-    ```
+   ```bash
+   docker run hello-world
+   ```
 
 ### Configure Docker to Start on Boot
 
 !!! note "Ubuntu Default"
-    On Ubuntu, Docker starts automatically on boot. Use these commands only to change this behavior.
+On Ubuntu, Docker starts automatically on boot. Use these commands only to change this behavior.
 
 === "Enable auto-start"
 
@@ -201,14 +200,14 @@ These steps apply to **both** Docker Desktop and Docker Engine installations.
 
 ## Useful Docker Commands
 
-| Command | Description |
-|---------|-------------|
-| `docker ps` | List running containers |
-| `docker ps -a` | List all containers (including stopped) |
-| `docker images` | List downloaded images |
-| `docker system prune` | Remove unused data (stopped containers, dangling images) |
-| `docker logs -f <name>` | Follow container logs |
-| `docker exec -it <name> bash` | Open a shell in a running container |
+| Command                       | Description                                              |
+| ----------------------------- | -------------------------------------------------------- |
+| `docker ps`                   | List running containers                                  |
+| `docker ps -a`                | List all containers (including stopped)                  |
+| `docker images`               | List downloaded images                                   |
+| `docker system prune`         | Remove unused data (stopped containers, dangling images) |
+| `docker logs -f <name>`       | Follow container logs                                    |
+| `docker exec -it <name> bash` | Open a shell in a running container                      |
 
 ---
 
