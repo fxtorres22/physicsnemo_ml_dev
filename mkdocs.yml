@@ -1,22 +1,64 @@
 site_name: PhysicsNeMo ML Dev
-site_description: Documentation for the PhysicsNeMo ML Development project.
+site_description: A personal learning journal for deploying, training, and using NVIDIA PhysicsNeMo ML models.
 site_author: Fernando Torres
+
+repo_url: https://github.com/NVIDIA/PhysicsNeMo
+repo_name: NVIDIA/PhysicsNeMo
+
+copyright: "&copy; 2026 Fernando Torres"
+
 nav:
   - Home: index.md
-  - Setup: setup.md
-  - DCV Setup: dcv_nvidia.md
+  - Environment Setup:
+      - WSL2 for ML Development: environment/wsl-setup.md
+      - Docker Installation: environment/docker-engine.md
+      - NVIDIA Container Toolkit: environment/nvidia-container-toolkit.md
+  - PhysicsNeMo:
+      - Container Setup: physicsnemo/container-setup.md
+      - VS Code Dev Container: physicsnemo/devcontainer.md
+  - Remote Desktop:
+      - DCV for NVIDIA VMs: remote-desktop/dcv-nvidia-setup.md
+
 theme:
   name: material
   palette:
-      scheme: slate
+    - scheme: slate
       primary: indigo
       accent: deep purple
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+    - scheme: default
+      primary: indigo
+      accent: deep purple
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
   font:
-      text: Roboto
-      code: ABeeZee
+    text: Roboto
+    code: Roboto Mono
+  icon:
+    repo: fontawesome/brands/github
+    logo: material/atom
   features:
-      - content.code.copy
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - navigation.footer
+    - search.suggest
+    - search.highlight
+    - toc.follow
+
 markdown_extensions:
+  # Admonitions (callout boxes)
+  - admonition
+  - pymdownx.details
+
+  # Code highlighting
   - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span
@@ -24,3 +66,27 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences
+
+  # Tabs (for Docker Desktop vs Docker Engine, etc.)
+  - pymdownx.tabbed:
+      alternate_style: true
+
+  # Task lists, keyboard keys, emoji
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.keys
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+  # Attributes And HTML in Markdown
+  - attr_list
+  - md_in_html
+  - def_list
+
+  # Table of contents
+  - toc:
+      permalink: true
+
+plugins:
+  - search

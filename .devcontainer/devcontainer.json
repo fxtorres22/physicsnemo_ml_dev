@@ -3,7 +3,7 @@
     "image": "nvcr.io/nvidia/physicsnemo/physicsnemo:25.11",
     "runArgs": [
         "--gpus=all",
-        "--shm-size=8g",
+        "--shm-size=1g",
         "--ulimit",
         "memlock=-1",
         "--ulimit",
@@ -12,20 +12,22 @@
     ],
     "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
     "workspaceFolder": "/workspace",
-    "forwardPorts": [8888],
+    "forwardPorts": [
+        8888
+    ],
     "portsAttributes": {
         "8888": {
             "label": "Jupyter",
             "onAutoForward": "notify"
         }
     },
-    "postCreateCommand": "pip install --upgrade pip jupyter",
+    //"postCreateCommand": "pip install --upgrade pip jupyter mlflow",
     "customizations": {
         "vscode": {
             "extensions": [
-                "ms-vscode-remote.remote-containers",
                 "ms-azuretools.vscode-containers",
-                "GitHub.copilot",
+                "ms-vscode-remote.remote-containers",
+                "Github.copilot",
                 "GitHub.copilot-chat",
                 "ms-toolsai.jupyter",
                 "ms-toolsai.vscode-jupyter-cell-tags",
@@ -34,36 +36,12 @@
                 "ms-python.vscode-pylance",
                 "ms-python.python",
                 "ms-python.debugpy",
-                "ms-python.vscode-python-envs",                
+                "ms-python.vscode-python-envs",
                 "redhat.vscode-yaml",
                 "ms-toolsai.jupyter-keymap"
             ],
             "settings": {
-                "python.defaultInterpreterPath": "/usr/bin/python",
-                "files.exclude": {
-                    "**.venv": true,
-                    ".github": true,
-                    "site": true,
-                    ".vscode": true,
-                    "docs": true,
-                    ".git": true
-                },
-                "files.watcherExclude": {
-                    "**/.venv/**": true,
-                    ".github/**": true,
-                    "site/**": true,
-                    ".vscode/**": true,
-                    "docs/**": true,
-                    ".git/**": true
-                },
-                "search.exclude": {
-                    "**/.venv": true
-                },
-                "python.analysis.exclude": [
-                    "**/.venv",
-                    "**/site",
-                    "**/docs"
-                ]
+                "python.defaultInterpreterPath": "/usr/bin/python"
             }
         }
     }
